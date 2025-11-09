@@ -536,11 +536,13 @@
         .contact-detail-item {
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: space-between;
             padding: 15px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
         
         .contact-detail-item:hover {
@@ -548,19 +550,51 @@
             transform: translateX(10px);
         }
         
-        .contact-detail-item i {
+        .contact-detail-item .contact-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-detail-item i.main-icon {
             font-size: 1.5em;
             color: #4CAF50;
         }
         
-        .contact-detail-item a {
+        .contact-detail-item .contact-text {
             color: white;
             text-decoration: none;
             font-size: 1.1em;
+            user-select: none;
         }
         
-        .contact-detail-item a:hover {
-            text-decoration: underline;
+        .contact-detail-item .copy-icon {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-detail-item:hover .copy-icon {
+            color: white;
+            transform: scale(1.2);
+        }
+        
+        .copy-tooltip {
+            position: absolute;
+            right: 15px;
+            top: -35px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .copy-tooltip.show {
+            opacity: 1;
         }
         
         @media (max-width: 768px) {
@@ -764,24 +798,30 @@
             <span class="close" onclick="closeContactModal()">&times;</span>
             <div class="modal-header">
                 <h2>Get In Touch</h2>
-                <p>Ready to discuss how I can contribute to your team</p>
+                <p>Click the copy icon to copy contact details</p>
             </div>
             <div class="contact-details">
-                <div class="contact-detail-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+919074794879">+91 90747 94879</a>
+                <div class="contact-detail-item" onclick="copyToClipboard('+919074794879', this)">
+                    <div class="contact-left">
+                        <i class="fas fa-phone main-icon"></i>
+                        <span class="contact-text">+91 90747 94879</span>
+                    </div>
+                    <i class="fas fa-copy copy-icon"></i>
+                    <span class="copy-tooltip">Copied!</span>
+                </div>
+                <div class="contact-detail-item" onclick="copyToClipboard('rahulravi6377@gmail.com', this)">
+                    <div class="contact-left">
+                        <i class="fas fa-envelope main-icon"></i>
+                        <span class="contact-text">rahulravi6377@gmail.com</span>
+                    </div>
+                    <i class="fas fa-copy copy-icon"></i>
+                    <span class="copy-tooltip">Copied!</span>
                 </div>
                 <div class="contact-detail-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:rahulravi6377@gmail.com">rahulravi6377@gmail.com</a>
-                </div>
-                <div class="contact-detail-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Chengannur, Kerala, India</span>
-                </div>
-                <div class="contact-detail-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="#" target="_blank">linkedin.com/in/rahul-ravi</a>
+                    <div class="contact-left">
+                        <i class="fas fa-map-marker-alt main-icon"></i>
+                        <span>Chengannur, Kerala, India</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -813,6 +853,31 @@
                 closeContactModal();
             }
         });
+        
+        // Copy to clipboard functionality
+        function copyToClipboard(text, element) {
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed'; // Prevent scrolling to bottom
+            document.body.appendChild(textarea);
+            
+            // Select and copy the text
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Remove the temporary element
+            document.body.removeChild(textarea);
+            
+            // Show the tooltip
+            const tooltip = element.querySelector('.copy-tooltip');
+            tooltip.classList.add('show');
+            
+            // Hide the tooltip after 2 seconds
+            setTimeout(() => {
+                tooltip.classList.remove('show');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
