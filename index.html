@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Ravi - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0f0f1e;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(45deg, #0f0f1e, #1a1a3e, #16213e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+        
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+            to { text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6); }
+        }
+        
+        .subtitle {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 1em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+        
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: 2em;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #764ba2;
+            transition: width 0.5s ease;
+        }
+        
+        section:hover h2::after {
+            width: 100%;
+        }
+        
+        .objective {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #555;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+        
+        .objective:hover {
+            transform: translateX(10px);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+        
+        .skill-item:hover::before {
+            transform: scale(1);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .skill-item strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .education-item, .experience-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #764ba2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .education-item:hover, .experience-item:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.2);
+            border-left-width: 8px;
+        }
+        
+        .experience-item h3, .education-item h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .date {
+            color: #666;
+            font-style: italic;
+            font-size: 0.95em;
+            display: inline-block;
+            padding: 5px 15px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            margin: 5px 0;
+        }
+        
+        .cert-list, .lang-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .cert-badge, .lang-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .cert-badge:hover, .lang-badge:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+        
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        ul li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 10px;
+            color: #667eea;
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f1e 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.95em;
+        }
+        
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .fab:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <header>
+            <h1>RAHUL RAVI</h1>
+            <p class="subtitle">Mechanical Engineering Professional | Sales Executive | Technical Support</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <a href="tel:+919074794879">+91 90747 94879</a>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:rahulravi6377@gmail.com">rahulravi6377@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Chengannur, Kerala</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <section>
+                <h2>Career Objective</h2>
+                <p class="objective">
+                    Highly motivated and detail-oriented professional with a background in Mechanical Engineering and hands-on experience in vehicle sales, customer service, and technical support. Skilled in communication, documentation, and problem-solving, seeking a position as Sales Executive / Sales Administrator / Estimator / Receptionist-Data Entry to contribute to operational efficiency and customer satisfaction.
+                </p>
+            </section>
+            
+            <section>
+                <h2>Key Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>💬 Communication</strong>
+                        <p>Fluent in English, Hindi, Malayalam, Tamil</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>🚗 Sales & Customer Service</strong>
+                        <p>Automotive sales, customer handling, negotiation</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>⚙️ Technical Knowledge</strong>
+                        <p>Vehicle features, finance/insurance options</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>📋 Administration</strong>
+                        <p>Documentation, data entry, record maintenance</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✅ Quality Assurance</strong>
+                        <p>QA/QC, inspection, NDT procedures</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>🎯 Professional Traits</strong>
+                        <p>Detail-oriented, teamwork, analytical mindset</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>🎓 Diploma in Oil & Gas Engineering</h3>
+                    <p>IMS Cochin | <span class="date">2021</span> | <strong>85%</strong></p>
+                </div>
+                <div class="education-item">
+                    <h3>🎓 Diploma in Mechanical Engineering</h3>
+                    <p>Sun Institute of Polytechnic | <span class="date">2019</span> | <strong>65%</strong></p>
+                </div>
+                <div class="education-item">
+                    <h3>🎓 Higher Secondary (Computer Science)</h3>
+                    <p>SN Trust HSS, Cheriyanad | <span class="date">2016</span> | <strong>56%</strong></p>
+                </div>
+                <div class="education-item">
+                    <h3>🎓 SSLC (10th)</h3>
+                    <p>DBHSS Cheriyanad | <span class="date">2014</span> | <strong>89%</strong></p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Work Experience</h2>
+                <div class="experience-item">
+                    <h3>💼 Sales Executive – Private Vehicle Showroom</h3>
+                    <p class="date">Chengannur, Kerala</p>
+                    <ul>
+                        <li>Assisted customers in selecting suitable vehicles based on needs and budget</li>
+                        <li>Demonstrated vehicle features and explained finance/insurance options</li>
+                        <li>Achieved monthly sales targets and built long-term customer relationships</li>
+                        <li>Maintained sales records, customer details, and follow-up communication</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>🚛 Commercial Vehicle Driver</h3>
+                    <p class="date">January 2020 – December 2021</p>
+                    <ul>
+                        <li>Operated and maintained commercial vehicles safely and efficiently</li>
+                        <li>Coordinated with supervisors to meet delivery schedules and customer requirements</li>
+                        <li>Assisted with basic documentation and reporting related to trips</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>🔍 QA/QC Training & Technical Projects</h3>
+                    <ul>
+                        <li>Exposure to documentation, inspection, and reporting procedures</li>
+                        <li>Familiar with estimation and checking technical specifications</li>
+                        <li>Worked with team members in achieving quality standards</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Certifications</h2>
+                <div class="cert-list">
+                    <span class="cert-badge">🏆 ASNT Level II - NDT</span>
+                    <span class="cert-badge">👁️ Visual Testing (VT)</span>
+                    <span class="cert-badge">🔬 LPT</span>
+                    <span class="cert-badge">🧲 MPT</span>
+                    <span class="cert-badge">📡 UT</span>
+                    <span class="cert-badge">☢️ RT</span>
+                    <span class="cert-badge">📷 Radiographic Film Interpretation</span>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Languages</h2>
+                <div class="lang-list">
+                    <span class="lang-badge">🇬🇧 English (Fluent)</span>
+                    <span class="lang-badge">🇮🇳 Malayalam (Native)</span>
+                    <span class="lang-badge">🇮🇳 Hindi (Conversational)</span>
+                    <span class="lang-badge">🇮🇳 Tamil (Conversational)</span>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>© 2025 Rahul Ravi | DOB: 18th May 1998 | Single | Available for Opportunities</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Ready to bring dedication and expertise to your team</p>
+        </footer>
+    </div>
+    
+    <div class="fab" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" title="Back to top">
+        ↑
+    </div>
+</body>
+</html>
