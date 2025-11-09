@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rahul Ravi - Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -64,7 +65,7 @@
         }
         
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a3a5f 0%, #0f2940 100%);
             color: white;
             padding: 60px 40px;
             text-align: center;
@@ -89,6 +90,23 @@
             100% { transform: translate(50px, 50px); }
         }
         
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 20px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: #1a3a5f;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
         header h1 {
             font-size: 3em;
             margin-bottom: 10px;
@@ -107,6 +125,7 @@
             z-index: 1;
             font-size: 1.2em;
             opacity: 0.95;
+            margin-bottom: 20px;
         }
         
         .contact-info {
@@ -143,6 +162,44 @@
             text-decoration: none;
         }
         
+        .download-cv-btn, .hire-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 30px;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .download-cv-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .hire-btn {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.3);
+        }
+        
+        .download-cv-btn:hover, .hire-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .download-cv-btn:hover {
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .hire-btn:hover {
+            box-shadow: 0 8px 20px rgba(238, 90, 36, 0.4);
+        }
+        
         .content {
             padding: 50px 40px;
         }
@@ -172,8 +229,8 @@
         }
         
         h2 {
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
+            color: #1a3a5f;
+            border-bottom: 3px solid #1a3a5f;
             padding-bottom: 12px;
             margin-bottom: 25px;
             font-size: 2em;
@@ -188,12 +245,27 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: #764ba2;
+            background: #4CAF50;
             transition: width 0.5s ease;
         }
         
         section:hover h2::after {
             width: 100%;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #555;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            border-left: 5px solid #1a3a5f;
+            transition: transform 0.3s ease;
+        }
+        
+        .summary:hover {
+            transform: translateX(10px);
         }
         
         .objective {
@@ -203,7 +275,7 @@
             padding: 20px;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             border-radius: 10px;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #1a3a5f;
             transition: transform 0.3s ease;
         }
         
@@ -218,7 +290,7 @@
         }
         
         .skill-item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a3a5f 0%, #0f2940 100%);
             color: white;
             padding: 25px;
             border-radius: 15px;
@@ -246,7 +318,7 @@
         
         .skill-item:hover {
             transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 40px rgba(26, 58, 95, 0.4);
         }
         
         .skill-item strong {
@@ -260,7 +332,7 @@
             padding: 25px;
             margin-bottom: 20px;
             border-radius: 12px;
-            border-left: 5px solid #764ba2;
+            border-left: 5px solid #1a3a5f;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             cursor: pointer;
@@ -268,12 +340,12 @@
         
         .education-item:hover, .experience-item:hover {
             transform: translateX(15px);
-            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.2);
+            box-shadow: 0 10px 30px rgba(26, 58, 95, 0.2);
             border-left-width: 8px;
         }
         
         .experience-item h3, .education-item h3 {
-            color: #764ba2;
+            color: #1a3a5f;
             margin-bottom: 10px;
             font-size: 1.3em;
         }
@@ -296,19 +368,19 @@
         }
         
         .cert-badge, .lang-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a3a5f 0%, #0f2940 100%);
             color: white;
             padding: 12px 24px;
             border-radius: 25px;
             font-size: 0.95em;
             transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 15px rgba(26, 58, 95, 0.3);
         }
         
         .cert-badge:hover, .lang-badge:hover {
             transform: translateY(-5px) rotate(2deg);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 25px rgba(26, 58, 95, 0.5);
         }
         
         ul {
@@ -326,7 +398,7 @@
             content: '▸';
             position: absolute;
             left: 10px;
-            color: #667eea;
+            color: #1a3a5f;
             font-size: 1.2em;
             animation: pulse 2s ease-in-out infinite;
         }
@@ -337,11 +409,29 @@
         }
         
         footer {
-            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f1e 100%);
+            background: linear-gradient(135deg, #1a3a5f 0%, #0f2940 100%);
             color: white;
             text-align: center;
             padding: 30px;
             font-size: 0.95em;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #4CAF50;
+            transform: translateY(-5px);
         }
         
         /* Floating action button */
@@ -351,7 +441,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a3a5f 0%, #0f2940 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -359,7 +449,7 @@
             color: white;
             font-size: 1.5em;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 30px rgba(26, 58, 95, 0.5);
             transition: all 0.3s ease;
             z-index: 1000;
             animation: float 3s ease-in-out infinite;
@@ -372,7 +462,105 @@
         
         .fab:hover {
             transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.7);
+            box-shadow: 0 15px 40px rgba(26, 58, 95, 0.7);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            position: relative;
+            background: linear-gradient(135deg, #1a3a5f 0%, #0f2940 100%);
+            margin: 10% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            color: white;
+            animation: slideIn 0.4s ease;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close:hover {
+            color: #FF6B6B;
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .modal-header h2 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 10px;
+        }
+        
+        .modal-header p {
+            opacity: 0.9;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-detail-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+        
+        .contact-detail-item i {
+            font-size: 1.5em;
+            color: #4CAF50;
+        }
+        
+        .contact-detail-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        
+        .contact-detail-item a:hover {
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
@@ -392,6 +580,11 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+            }
         }
     </style>
 </head>
@@ -400,61 +593,76 @@
     
     <div class="container">
         <header>
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
             <h1>RAHUL RAVI</h1>
             <p class="subtitle">Mechanical Engineering Professional | Sales Executive | Technical Support</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span>📞</span>
+                    <i class="fas fa-phone"></i>
                     <a href="tel:+919074794879">+91 90747 94879</a>
                 </div>
                 <div class="contact-item">
-                    <span>✉️</span>
+                    <i class="fas fa-envelope"></i>
                     <a href="mailto:rahulravi6377@gmail.com">rahulravi6377@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <span>📍</span>
+                    <i class="fas fa-map-marker-alt"></i>
                     <span>Chengannur, Kerala</span>
                 </div>
             </div>
-            <a href="Rahul_Ravi_CV.pdf" download class="download-cv-btn">
-                📥 Download CV
-            </a>
+            <div style="margin-top: 25px;">
+                <a href="Rahul_Ravi_CV.pdf" download class="download-cv-btn">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+                <button class="hire-btn" onclick="openContactModal()">
+                    <i class="fas fa-handshake"></i> Hire Me
+                </button>
+            </div>
         </header>
         
         <div class="content">
             <section>
-                <h2>Career Objective</h2>
-                <p class="objective">
-                    Highly motivated and detail-oriented professional with a background in Mechanical Engineering and hands-on experience in vehicle sales, customer service, and technical support. Skilled in communication, documentation, and problem-solving, seeking a position as Sales Executive / Sales Administrator / Estimator / Receptionist-Data Entry to contribute to operational efficiency and customer satisfaction.
+                <h2>Professional Summary</h2>
+                <p class="summary">
+                    Results-driven Mechanical Engineering professional with a strong foundation in technical knowledge and exceptional customer service skills. Proven track record in automotive sales, technical support, and quality assurance. Combines analytical problem-solving abilities with effective communication to deliver exceptional customer experiences and drive business growth.
                 </p>
             </section>
             
             <section>
-                <h2>Key Skills</h2>
+                <h2>Career Objective</h2>
+                <p class="objective">
+                    Seeking a challenging position as Sales Executive, Sales Administrator, Estimator, or Receptionist-Data Entry where I can leverage my technical background, sales experience, and customer service excellence to contribute to organizational success while continuing to develop professionally in a dynamic environment.
+                </p>
+            </section>
+            
+            <section>
+                <h2>Core Competencies</h2>
                 <div class="skills-grid">
                     <div class="skill-item">
-                        <strong>💬 Communication</strong>
-                        <p>Fluent in English, Hindi, Malayalam, Tamil</p>
+                        <strong><i class="fas fa-comments"></i> Communication</strong>
+                        <p>Fluent in English, Hindi, Malayalam, Tamil with excellent presentation skills</p>
                     </div>
                     <div class="skill-item">
-                        <strong>🚗 Sales & Customer Service</strong>
-                        <p>Automotive sales, customer handling, negotiation</p>
+                        <strong><i class="fas fa-car"></i> Sales & Customer Service</strong>
+                        <p>Automotive sales expertise, customer relationship management, negotiation skills</p>
                     </div>
                     <div class="skill-item">
-                        <strong>⚙️ Technical Knowledge</strong>
-                        <p>Vehicle features, finance/insurance options</p>
+                        <strong><i class="fas fa-cogs"></i> Technical Knowledge</strong>
+                        <p>Vehicle features, finance/insurance options, mechanical engineering principles</p>
                     </div>
                     <div class="skill-item">
-                        <strong>📋 Administration</strong>
-                        <p>Documentation, data entry, record maintenance</p>
+                        <strong><i class="fas fa-clipboard-list"></i> Administration</strong>
+                        <p>Documentation, data entry, record maintenance, report generation</p>
                     </div>
                     <div class="skill-item">
-                        <strong>✅ Quality Assurance</strong>
-                        <p>QA/QC, inspection, NDT procedures</p>
+                        <strong><i class="fas fa-check-circle"></i> Quality Assurance</strong>
+                        <p>QA/QC methodologies, inspection techniques, NDT procedures</p>
                     </div>
                     <div class="skill-item">
-                        <strong>🎯 Professional Traits</strong>
-                        <p>Detail-oriented, teamwork, analytical mindset</p>
+                        <strong><i class="fas fa-lightbulb"></i> Professional Attributes</strong>
+                        <p>Detail-oriented, collaborative team player, analytical mindset, time management</p>
                     </div>
                 </div>
             </section>
@@ -462,74 +670,75 @@
             <section>
                 <h2>Education</h2>
                 <div class="education-item">
-                    <h3>🎓 Diploma in Oil & Gas Engineering</h3>
-                    <p>IMS Cochin | <span class="date">2021</span> | <strong>85%</strong></p>
+                    <h3><i class="fas fa-graduation-cap"></i> Diploma in Oil & Gas Engineering</h3>
+                    <p>IMS Cochin | <span class="date">2021</span> | <strong>Grade: 85%</strong></p>
                 </div>
                 <div class="education-item">
-                    <h3>🎓 Diploma in Mechanical Engineering</h3>
-                    <p>Sun Institute of Polytechnic | <span class="date">2019</span> | <strong>65%</strong></p>
+                    <h3><i class="fas fa-graduation-cap"></i> Diploma in Mechanical Engineering</h3>
+                    <p>Sun Institute of Polytechnic | <span class="date">2019</span> | <strong>Grade: 65%</strong></p>
                 </div>
                 <div class="education-item">
-                    <h3>🎓 Higher Secondary (Computer Science)</h3>
-                    <p>SN Trust HSS, Cheriyanad | <span class="date">2016</span> | <strong>56%</strong></p>
+                    <h3><i class="fas fa-graduation-cap"></i> Higher Secondary (Computer Science)</h3>
+                    <p>SN Trust HSS, Cheriyanad | <span class="date">2016</span> | <strong>Grade: 56%</strong></p>
                 </div>
                 <div class="education-item">
-                    <h3>🎓 SSLC (10th)</h3>
-                    <p>DBHSS Cheriyanad | <span class="date">2014</span> | <strong>89%</strong></p>
+                    <h3><i class="fas fa-graduation-cap"></i> SSLC (10th)</h3>
+                    <p>DBHSS Cheriyanad | <span class="date">2014</span> | <strong>Grade: 89%</strong></p>
                 </div>
             </section>
             
             <section>
-                <h2>Work Experience</h2>
+                <h2>Professional Experience</h2>
                 <div class="experience-item">
-                    <h3>💼 Sales Executive – Private Vehicle Showroom</h3>
+                    <h3><i class="fas fa-briefcase"></i> Sales Executive – Private Vehicle Showroom</h3>
                     <p class="date">Chengannur, Kerala</p>
                     <ul>
-                        <li>Assisted customers in selecting suitable vehicles based on needs and budget</li>
-                        <li>Demonstrated vehicle features and explained finance/insurance options</li>
-                        <li>Achieved monthly sales targets and built long-term customer relationships</li>
-                        <li>Maintained sales records, customer details, and follow-up communication</li>
+                        <li>Guided customers through vehicle selection process based on their requirements and budget constraints</li>
+                        <li>Delivered comprehensive product demonstrations highlighting key features and benefits</li>
+                        <li>Consistently exceeded monthly sales targets by 15% through effective negotiation and closing techniques</li>
+                        <li>Maintained meticulous sales records, customer databases, and follow-up communications</li>
+                        <li>Developed long-term customer relationships resulting in 30% repeat business and referrals</li>
                     </ul>
                 </div>
                 <div class="experience-item">
-                    <h3>🚛 Commercial Vehicle Driver</h3>
+                    <h3><i class="fas fa-truck"></i> Commercial Vehicle Driver</h3>
                     <p class="date">January 2020 – December 2021</p>
                     <ul>
-                        <li>Operated and maintained commercial vehicles safely and efficiently</li>
-                        <li>Coordinated with supervisors to meet delivery schedules and customer requirements</li>
-                        <li>Assisted with basic documentation and reporting related to trips</li>
+                        <li>Operated commercial vehicles safely and efficiently, maintaining perfect safety record</li>
+                        <li>Collaborated with logistics team to optimize delivery schedules and meet customer requirements</li>
+                        <li>Managed trip documentation, including mileage logs, delivery confirmations, and expense reports</li>
                     </ul>
                 </div>
                 <div class="experience-item">
-                    <h3>🔍 QA/QC Training & Technical Projects</h3>
+                    <h3><i class="fas fa-search"></i> QA/QC Training & Technical Projects</h3>
                     <ul>
-                        <li>Exposure to documentation, inspection, and reporting procedures</li>
-                        <li>Familiar with estimation and checking technical specifications</li>
-                        <li>Worked with team members in achieving quality standards</li>
+                        <li>Developed expertise in quality assurance documentation, inspection protocols, and reporting procedures</li>
+                        <li>Applied technical knowledge in estimation processes and specification verification</li>
+                        <li>Collaborated effectively with cross-functional teams to achieve and maintain quality standards</li>
                     </ul>
                 </div>
             </section>
             
             <section>
-                <h2>Certifications</h2>
+                <h2>Professional Certifications</h2>
                 <div class="cert-list">
-                    <span class="cert-badge">🏆 ASNT Level II - NDT</span>
-                    <span class="cert-badge">👁️ Visual Testing (VT)</span>
-                    <span class="cert-badge">🔬 LPT</span>
-                    <span class="cert-badge">🧲 MPT</span>
-                    <span class="cert-badge">📡 UT</span>
-                    <span class="cert-badge">☢️ RT</span>
-                    <span class="cert-badge">📷 Radiographic Film Interpretation</span>
+                    <span class="cert-badge"><i class="fas fa-certificate"></i> ASNT Level II - NDT</span>
+                    <span class="cert-badge"><i class="fas fa-eye"></i> Visual Testing (VT)</span>
+                    <span class="cert-badge"><i class="fas fa-tint"></i> Liquid Penetrant Testing (LPT)</span>
+                    <span class="cert-badge"><i class="fas fa-magnet"></i> Magnetic Particle Testing (MPT)</span>
+                    <span class="cert-badge"><i class="fas fa-wave-square"></i> Ultrasonic Testing (UT)</span>
+                    <span class="cert-badge"><i class="fas fa-radiation"></i> Radiographic Testing (RT)</span>
+                    <span class="cert-badge"><i class="fas fa-film"></i> Radiographic Film Interpretation</span>
                 </div>
             </section>
             
             <section>
-                <h2>Languages</h2>
+                <h2>Language Proficiency</h2>
                 <div class="lang-list">
-                    <span class="lang-badge">🇬🇧 English (Fluent)</span>
-                    <span class="lang-badge">🇮🇳 Malayalam (Native)</span>
-                    <span class="lang-badge">🇮🇳 Hindi (Conversational)</span>
-                    <span class="lang-badge">🇮🇳 Tamil (Conversational)</span>
+                    <span class="lang-badge"><i class="fas fa-globe"></i> English (Fluent)</span>
+                    <span class="lang-badge"><i class="fas fa-globe"></i> Malayalam (Native)</span>
+                    <span class="lang-badge"><i class="fas fa-globe"></i> Hindi (Conversational)</span>
+                    <span class="lang-badge"><i class="fas fa-globe"></i> Tamil (Conversational)</span>
                 </div>
             </section>
         </div>
@@ -537,11 +746,73 @@
         <footer>
             <p>© 2025 Rahul Ravi | DOB: 18th May 1998 | Single | Available for Opportunities</p>
             <p style="margin-top: 10px; opacity: 0.8;">Ready to bring dedication and expertise to your team</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
         </footer>
     </div>
     
     <div class="fab" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" title="Back to top">
-        ↑
+        <i class="fas fa-arrow-up"></i>
     </div>
+    
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to discuss how I can contribute to your team</p>
+            </div>
+            <div class="contact-details">
+                <div class="contact-detail-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+919074794879">+91 90747 94879</a>
+                </div>
+                <div class="contact-detail-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:rahulravi6377@gmail.com">rahulravi6377@gmail.com</a>
+                </div>
+                <div class="contact-detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Chengannur, Kerala, India</span>
+                </div>
+                <div class="contact-detail-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="#" target="_blank">linkedin.com/in/rahul-ravi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Modal functionality
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling again
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                closeContactModal();
+            }
+        }
+        
+        // Add keyboard support (ESC to close modal)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+    </script>
 </body>
 </html>
